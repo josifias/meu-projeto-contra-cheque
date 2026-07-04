@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Contra-cheque por Plantão</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="header-emblema">
+        <svg class="emblema-svg" viewBox="0 0 24 24">
+            <path d="M19,8C21.21,8 23,9.79 23,12C23,14.21 21.21,16 19,16V18H2V16H3V11H2V9H14V11H12V13.09C12.67,13.34 13.29,13.74 13.79,14.25L17.03,11H15V9H19M19,10A2,2 0 0,0 17,12A2,2 0 0,0 19,14A2,2 0 0,0 21,12A2,2 0 0,0 19,10M7,11H9V16H7V11M14.5,4C15.33,4 16,4.67 16,5.5C16,6.5 14.5,8 14.5,8C14.5,8 13,6.5 13,5.5C13,4.67 13.67,4 14.5,4Z"/>
+        </svg>
+        <h2>Lançamento de Horas (Plantões)</h2>
+        <h3>Profissionais de Enfermagem</h3>
+    </div>
+        
+    <div class="form-group">
+        <label for="horasSD">Semana Diurno (R$ 21,60/h):</label>
+        <input type="text" id="horasSD" value="0">
+    </div>
+        
+    <div class="form-group">
+        <label for="horasSN">Semana Noturno (R$ 25,35/h):</label>
+        <input type="text" id="horasSN" value="0">
+    </div>
+        
+    <div class="form-group">
+        <label for="horasFD">Final de Semana Diurno (R$ 24,80/h):</label>
+        <input type="text" id="horasFD" value="0">
+    </div>
+        
+    <div class="form-group">
+        <label for="horasFN">Final de Semana Noturno (R$ 29,05/h):</label>
+        <input type="text" id="horasFN" value="0">
+    </div>
+        
+    <button onclick="calcularContraCheque()">Calcular e Gerar Contra-cheque</button>
+        
+    <div class="creditos">
+        Desenvolvido por: <strong>Josifias Lima</strong>
+    </div>
+</div>
+
+<div id="contraCheque" class="container recibo">
+    <div class="topo-recibo">
+        DEMONSTRATIVO DE PAGAMENTO - ENFERMAGEM
+    </div>
+    <table class="tabela">
+        <thead>
+            <tr>
+                <th>DESCRIÇÃO</th>
+                <th class="text-right">PROVENTOS</th>
+                <th class="text-right">DESCONTOS</th>
+            </tr>
+        </thead>
+        <tbody id="corpoTabela">
+            <!-- Conteúdo inserido via JS -->
+        </tbody>
+    </table>
+    <div class="rodape-recibo">
+        <span id="basesCalculo">Bases de Cálculo - INSS: R$ 0.00 | IRRF: R$ 0.00</span>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
