@@ -296,4 +296,11 @@ button:hover {
     .tabela tr.linha-liquido td {
         font-size: 1.1rem;
     }
+    .versao-app {
+    display: inline-block;
+    margin-top: 5px;
+    color: #999;
+    font-size: 0.75rem;
+    }
+
 }

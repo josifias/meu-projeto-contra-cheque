@@ -1,3 +1,14 @@
+// Controle de Versão do Aplicativo (Padrão SemVer: Maior.Menor.Correção)
+const VERSAO_APP = "1.1.5"; 
+
+// Injeta a versão no HTML assim que o ficheiro é lido pelo navegador
+document.addEventListener("DOMContentLoaded", () => {
+    const elementoVersao = document.getElementById('appVersao');
+    if (elementoVersao) {
+        elementoVersao.innerText = VERSAO_APP;
+    }
+});
+
 function formatarMoeda(valor) {
     return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
