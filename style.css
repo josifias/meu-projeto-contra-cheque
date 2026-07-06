@@ -196,16 +196,71 @@ button:hover {
         font-size: 16px;
     }
     
+    /* REESTRUTURAÇÃO DO RELATÓRIO PARA O VALOR FICAR EMBAIXO */
     .recibo {
         padding: 15px;
-        font-size: 0.85rem;
+        font-size: 0.95rem;
     }
     
     .topo-recibo {
         font-size: 1rem;
+        margin-bottom: 10px;
     }
     
-    .linha-liquido {
-        font-size: 1.05rem;
+    /* Esconde as colunas de Proventos/Descontos do topo para não confundir */
+    .tabela thead .col-proventos,
+    .tabela thead .col-descontos {
+        display: none;
+    }
+
+    /* Faz cada linha virar um bloco empilhado */
+    .tabela tr {
+        display: block;
+        padding: 10px 0;
+        border-bottom: 1px dashed #ddd;
+    }
+
+    /* Remove a borda padrão das células */
+    .tabela td {
+        display: block;
+        width: 100% !important;
+        padding: 2px 0 !important;
+        text-align: left !important; /* Força o alinhamento à esquerda no celular */
+    }
+
+    /* Destaca a descrição principal */
+    .tabela td:first-child {
+        font-weight: bold;
+        color: #222;
+    }
+
+    /* Estiliza o valor (Provento ou Desconto) que ficou embaixo */
+    .tabela td.text-right {
+        color: #666;
+        font-size: 0.9rem;
+    }
+    
+    /* Adiciona uma marcação antes do valor para o usuário saber o que é */
+    .tabela td.text-right:not(:empty)::before {
+        content: "Valor: ";
+        font-weight: normal;
+        color: #999;
+    }
+
+    /* Ajustes para as linhas de Total e Líquido continuarem bonitas */
+    .tabela tr.linha-total, 
+    .tabela tr.linha-liquido {
+        border-bottom: none;
+        padding-top: 12px;
+    }
+
+    .tabela tr.linha-total td.text-right::before,
+    .tabela tr.linha-liquido td.text-right::before {
+        content: "" !important; /* Remove o texto "Valor: " dos totais */
+    }
+
+    .tabela tr.linha-liquido td {
+        font-size: 1.1rem;
+        color: rgb(225, 38, 0) !important;
     }
 }
