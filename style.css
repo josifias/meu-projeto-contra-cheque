@@ -1,3 +1,7 @@
+/* ==========================================================================
+   1. ESTILOS GLOBAIS (BASE & LAYOUT)
+   ========================================================================== */
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background-color: #f4f4f9;
@@ -17,6 +21,7 @@ body {
     box-sizing: border-box;
 }
 
+/* Header e Elementos de Texto */
 .header-emblema {
     display: flex;
     flex-direction: column;
@@ -46,6 +51,7 @@ h3 {
     margin-bottom: 5px;
 }
 
+/* Formulários e Inputs */
 .form-group {
     margin-bottom: 18px;
     display: flex;
@@ -104,6 +110,10 @@ button:hover {
     color: #444;
 }
 
+/* ==========================================================================
+   2. EXIBIÇÃO DO RECIBO / CONTRA-CHEQUE (COMPUTADOR)
+   ========================================================================== */
+
 .recibo {
     display: none;
     border: 2px solid #333;
@@ -111,6 +121,8 @@ button:hover {
     background-color: #fff;
     font-family: 'Courier New', Courier, monospace;
     font-size: 1rem;
+    /* CORREÇÃO: Aumentado de 600px para 750px para dar mais folga aos dígitos grandes */
+    max-width: 750px; 
 }
 
 .topo-recibo {
@@ -129,15 +141,38 @@ button:hover {
 
 .tabela th, .tabela td {
     text-align: left;
-    padding: 10px 0;
+    padding: 10px 8px; /* CORREÇÃO: Adicionado espaçamento lateral nas células */
 }
 
 .tabela th {
     border-bottom: 1px solid #333;
 }
 
+.rodape-recibo {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    border-top: 1px dashed #666;
+    padding-top: 15px;
+    color: #444;
+    line-height: 1.5;
+}
+
+/* Alinhamentos, Totais e Classes de Destaque de Cores */
 .text-right {
     text-align: right;
+    white-space: nowrap; /* CORREÇÃO: Impede que o R$ quebre de linha se o número for gigante */
+}
+
+.text-ganho {
+    color: #27ae60 !important;
+}
+
+.text-desconto {
+    color: #c0392b !important;
+}
+
+.text-liquido-val {
+    color: #2980b9 !important;
 }
 
 .linha-total {
@@ -153,19 +188,10 @@ button:hover {
     padding: 15px 0;
 }
 
-.rodape-recibo {
-    margin-top: 20px;
-    font-size: 0.9rem;
-    border-top: 1px dashed #666;
-    padding-top: 15px;
-    color: #444;
-    line-height: 1.5;
-}
-.text-desconto {
-    color: #c0392b !important; /* Cor vermelha para indicar redução */
-}
+/* ==========================================================================
+   3. RESPONSIVIDADE PARA CELULAR (Telas de até 600px de largura)
+   ========================================================================== */
 
-/* RESPONSIVIDADE PARA CELULAR (Telas de até 600px de largura) */
 @media (max-width: 600px) {
     body {
         padding: 10px;
@@ -174,6 +200,7 @@ button:hover {
     .container {
         padding: 20px 15px;
         margin-bottom: 15px;
+        max-width: 100%;
     }
     
     .form-group {
@@ -199,10 +226,11 @@ button:hover {
         font-size: 16px;
     }
     
-    /* REESTRUTURAÇÃO DO RELATÓRIO PARA O VALOR FICAR EMBAIXO */
+    /* No celular, o recibo volta a ocupar toda a largura disponível */
     .recibo {
         padding: 15px;
         font-size: 0.95rem;
+        max-width: 100%;
     }
     
     .topo-recibo {
@@ -210,100 +238,61 @@ button:hover {
         margin-bottom: 10px;
     }
     
-    /* Esconde as colunas de Proventos/Descontos do topo para não confundir */
     .tabela thead .col-proventos,
     .tabela thead .col-descontos {
         display: none;
     }
 
-    /* Faz cada linha virar um bloco empilhado */
     .tabela tr {
         display: block;
         padding: 10px 0;
         border-bottom: 1px dashed #ddd;
     }
 
-    /* Remove a borda padrão das células */
     .tabela td {
         display: block;
         width: 100% !important;
         padding: 2px 0 !important;
-        text-align: left !important; /* Força o alinhamento à esquerda no celular */
+        text-align: left !important;
     }
 
-    /* Destaca a descrição principal */
     .tabela td:first-child {
         font-weight: bold;
         color: #222;
     }
 
-    /* Estiliza o valor (Provento ou Desconto) que ficou embaixo */
     .tabela td.text-right {
-        color: #666;
         font-size: 0.9rem;
     }
     
-    /* Adiciona uma marcação antes do valor para o usuário saber o que é */
-    .tabela td.text-right:not(:empty)::before {
-        content: "Valor: ";
-        font-weight: normal;
-        color: #999;
-    }
-
-    /* Ajustes para as linhas de Total e Líquido continuarem bonitas */
-    .tabela tr.linha-total, 
-    .tabela tr.linha-liquido {
-        border-bottom: none;
-        padding-top: 12px;
-    }
-
-    .tabela tr.linha-total td.text-right::before,
-    .tabela tr.linha-liquido td.text-right::before {
-        content: "" !important; /* Remove o texto "Valor: " dos totais */
-    }
-
-    .tabela tr.linha-liquido td {
-        font-size: 1.1rem;
-        color: rgb(225, 38, 0) !important;
-    }
-    /* ... código anterior do @media ... */
-
-    /* Estiliza o valor que ficou embaixo no celular */
-    .tabela td.text-right {
-        color: #27ae60; /* Verde padrão para os ganhos/proventos */
-        font-size: 0.9rem;
-    }
-    
-    /* Se for um desconto, muda para vermelho */
-    .tabela td.text-desconto {
-        color: #c0392b !important;
-    }
-    
-    /* Adiciona a etiqueta correta antes do valor no celular */
-    .tabela td.text-right:not(:empty)::before {
+    .tabela td.text-ganho:not(:empty)::before {
         content: "Ganho: ";
         font-weight: normal;
         color: #999;
     }
 
     .tabela td.text-desconto:not(:empty)::before {
-        content: "Redução: " !important;
+        content: "Dedução: " !important;
         font-weight: normal;
         color: #999;
     }
 
-    /* Ajustes para as linhas de Total e Líquido continuarem bonitas */
-    .tabela tr.linha-total td.text-right::before,
-    .tabela tr.linha-liquido td.text-right::before {
-        content: "" !important; /* Remove as etiquetas dos totais */
+    .tabela tr.linha-total, 
+    .tabela tr.linha-liquido {
+        border-bottom: none;
+        padding-top: 12px;
+    }
+
+    .tabela tr.linha-total td::before,
+    .tabela tr.linha-liquido td::before {
+        content: "" !important;
     }
     
     .tabela tr.linha-total td.text-right {
-        color: #222; /* Total bruto volta a ser cor neutra */
+        color: #222 !important;
     }
 
     .tabela tr.linha-liquido td {
         font-size: 1.1rem;
-        color: #2980b9 !important; /* Cor azul de destaque para o líquido final */
     }
 }

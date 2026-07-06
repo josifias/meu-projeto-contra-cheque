@@ -74,11 +74,13 @@ function calcularContraCheque() {
     const valorLiquido = rendaBruta - totalDescontos;
     let htmlCorpo = "";
 
-    if (hSD > 0) htmlCorpo += `<tr><td>Plantão Semana Diurno (${hSD}h)</td><td class="text-right">${formatarMoeda(valorSD)}</td><td></td></tr>`;
-    if (hSN > 0) htmlCorpo += `<tr><td>Plantão Semana Noturno (${hSN}h)</td><td class="text-right">${formatarMoeda(valorSN)}</td><td></td></tr>`;
-    if (hFD > 0) htmlCorpo += `<tr><td>Plantão Fim de Semana Diurno (${hFD}h)</td><td class="text-right">${formatarMoeda(valorFD)}</td><td></td></tr>`;
-    if (hFN > 0) htmlCorpo += `<tr><td>Plantão Fim de Semana Noturno (${hFN}h)</td><td class="text-right">${formatarMoeda(valorFN)}</td><td></td></tr>`;
+    // Ganhos (Plantões) - Classe text-ganho adicionada na coluna de Proventos
+    if (hSD > 0) htmlCorpo += `<tr><td>Plantão Semana Diurno (${hSD}h)</td><td class="text-right text-ganho">${formatarMoeda(valorSD)}</td><td></td></tr>`;
+    if (hSN > 0) htmlCorpo += `<tr><td>Plantão Semana Noturno (${hSN}h)</td><td class="text-right text-ganho">${formatarMoeda(valorSN)}</td><td></td></tr>`;
+    if (hFD > 0) htmlCorpo += `<tr><td>Plantão Fim de Semana Diurno (${hFD}h)</td><td class="text-right text-ganho">${formatarMoeda(valorFD)}</td><td></td></tr>`;
+    if (hFN > 0) htmlCorpo += `<tr><td>Plantão Fim de Semana Noturno (${hFN}h)</td><td class="text-right text-ganho">${formatarMoeda(valorFN)}</td><td></td></tr>`;
     
+    // Deduções - Sinal de menos (-) e classe text-desconto na coluna de Descontos
     htmlCorpo += `
         <tr>
             <td>INSS Contrib. Indiv. (20%)</td>
@@ -97,7 +99,7 @@ function calcularContraCheque() {
         </tr>
         <tr class="linha-liquido">
             <td>VALOR LÍQUIDO A RECEBER</td>
-            <td class="text-right" colspan="2">${formatarMoeda(valorLiquido)}</td>
+            <td class="text-right text-liquido-val" colspan="2">${formatarMoeda(valorLiquido)}</td>
         </tr>
     `;
 
