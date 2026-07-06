@@ -83,17 +83,17 @@ function calcularContraCheque() {
         <tr>
             <td>INSS Contrib. Indiv. (20%)</td>
             <td></td>
-            <td class="text-right">${formatarMoeda(descontoINSS)}</td>
+            <td class="text-right text-desconto">-${formatarMoeda(descontoINSS)}</td>
         </tr>
         <tr>
             <td>IRRF Retido na Fonte</td>
             <td></td>
-            <td class="text-right">${impostoFinal > 0 ? formatarMoeda(impostoFinal) : "Isento"}</td>
+            <td class="text-right text-desconto">${impostoFinal > 0 ? '-' + formatarMoeda(impostoFinal) : "Isento"}</td>
         </tr>
         <tr class="linha-total">
             <td>TOTAL</td>
             <td class="text-right">${formatarMoeda(rendaBruta)}</td>
-            <td class="text-right">${formatarMoeda(totalDescontos)}</td>
+            <td class="text-right text-desconto">-${formatarMoeda(totalDescontos)}</td>
         </tr>
         <tr class="linha-liquido">
             <td>VALOR LÍQUIDO A RECEBER</td>

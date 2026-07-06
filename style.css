@@ -161,6 +161,9 @@ button:hover {
     color: #444;
     line-height: 1.5;
 }
+.text-desconto {
+    color: #c0392b !important; /* Cor vermelha para indicar redução */
+}
 
 /* RESPONSIVIDADE PARA CELULAR (Telas de até 600px de largura) */
 @media (max-width: 600px) {
@@ -262,5 +265,45 @@ button:hover {
     .tabela tr.linha-liquido td {
         font-size: 1.1rem;
         color: rgb(225, 38, 0) !important;
+    }
+    /* ... código anterior do @media ... */
+
+    /* Estiliza o valor que ficou embaixo no celular */
+    .tabela td.text-right {
+        color: #27ae60; /* Verde padrão para os ganhos/proventos */
+        font-size: 0.9rem;
+    }
+    
+    /* Se for um desconto, muda para vermelho */
+    .tabela td.text-desconto {
+        color: #c0392b !important;
+    }
+    
+    /* Adiciona a etiqueta correta antes do valor no celular */
+    .tabela td.text-right:not(:empty)::before {
+        content: "Ganho: ";
+        font-weight: normal;
+        color: #999;
+    }
+
+    .tabela td.text-desconto:not(:empty)::before {
+        content: "Redução: " !important;
+        font-weight: normal;
+        color: #999;
+    }
+
+    /* Ajustes para as linhas de Total e Líquido continuarem bonitas */
+    .tabela tr.linha-total td.text-right::before,
+    .tabela tr.linha-liquido td.text-right::before {
+        content: "" !important; /* Remove as etiquetas dos totais */
+    }
+    
+    .tabela tr.linha-total td.text-right {
+        color: #222; /* Total bruto volta a ser cor neutra */
+    }
+
+    .tabela tr.linha-liquido td {
+        font-size: 1.1rem;
+        color: #2980b9 !important; /* Cor azul de destaque para o líquido final */
     }
 }
