@@ -1,143 +1,211 @@
 body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f4f4f9;
-            padding: 30px;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            max-width: 800px;
-            width: 100%;
-            box-sizing: border-box;
-            margin-bottom: 24px;
-        }
-        .header-emblema {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 25px;
-        }
-        .emblema-svg {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 12px;
-            fill: rgb(225, 38, 0);
-        }
-        h2 {
-            text-align: center;
-            margin: 0;
-            color: #222;
-            font-size: 1.6rem;
-        }
-        h3 {
-            text-align: center;
-            color: #666;
-            font-size: 1.05rem;
-            margin-top: 8px;
-            margin-bottom: 5px;
-        }
-        .form-group {
-            margin-bottom: 18px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        label {
-            font-weight: 600;
-            font-size: 1rem;
-            color: #444;
-            width: 70%;
-        }
-        input[type="text"] {
-            width: 25%;
-            padding: 10px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 16px;
-            font-family: inherit;
-            text-align: right;
-        }
-        button {
-            width: 100%;
-            padding: 16px;
-            background-color: rgb(225, 38, 0);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            cursor: pointer;
-            font-family: inherit;
-            font-weight: bold;
-            margin-top: 15px;
-            transition: background-color 0.2s;
-        }
-        button:hover {
-            background-color: rgb(185, 30, 0);
-        }
-        .creditos {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 0.85rem;
-            color: #777;
-            border-top: 1px solid #eee;
-            padding-top: 15px;
-        }
-        .creditos strong {
-            color: #444;
-        }
-        .recibo {
-            display: none;
-            border: 2px solid #333;
-            padding: 25px;
-            background-color: #fff;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 1rem;
-        }
-        .topo-recibo {
-            text-align: center;
-            border-bottom: 2px solid #333;
-            padding-bottom: 15px;
-            margin-bottom: 15px;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-        .tabela {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .tabela th, .tabela td {
-            text-align: left;
-            padding: 10px 0;
-        }
-        .tabela th {
-            border-bottom: 1px solid #333;
-        }
-        .text-right {
-            text-align: right;
-        }
-        .linha-total {
-            border-top: 2px solid #333;
-            font-weight: bold;
-        }
-        .linha-liquido {
-            border-top: 2px solid #333;
-            border-bottom: 2px solid #333;
-            font-size: 1.2rem;
-            font-weight: bold;
-            padding: 15px 0;
-        }
-        .rodape-recibo {
-            margin-top: 20px;
-            font-size: 0.9rem;
-            border-top: 1px dashed #666;
-            padding-top: 15px;
-            color: #444;
-            line-height: 1.5;
-        }
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f4f9;
+    padding: 30px;
+    margin: 0;
+    display: block;
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    max-width: 600px;
+    margin: 0 auto 24px auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.header-emblema {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.emblema-svg {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 12px;
+    fill: rgb(225, 38, 0);
+}
+
+h2 {
+    text-align: center;
+    margin: 0;
+    color: #222;
+    font-size: 1.6rem;
+}
+
+h3 {
+    text-align: center;
+    color: #666;
+    font-size: 1.05rem;
+    margin-top: 8px;
+    margin-bottom: 5px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+label {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #444;
+    width: 70%;
+}
+
+input[type="text"] {
+    width: 30%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: inherit;
+    text-align: right;
+}
+
+button {
+    width: 100%;
+    padding: 16px;
+    background-color: rgb(225, 38, 0);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: rgb(185, 30, 0);
+}
+
+.creditos {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.85rem;
+    color: #777;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.creditos strong {
+    color: #444;
+}
+
+.recibo {
+    display: none;
+    border: 2px solid #333;
+    padding: 25px;
+    background-color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+}
+
+.topo-recibo {
+    text-align: center;
+    border-bottom: 2px solid #333;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabela th, .tabela td {
+    text-align: left;
+    padding: 10px 0;
+}
+
+.tabela th {
+    border-bottom: 1px solid #333;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.linha-total {
+    border-top: 2px solid #333;
+    font-weight: bold;
+}
+
+.linha-liquido {
+    border-top: 2px solid #333;
+    border-bottom: 2px solid #333;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 15px 0;
+}
+
+.rodape-recibo {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    border-top: 1px dashed #666;
+    padding-top: 15px;
+    color: #444;
+    line-height: 1.5;
+}
+
+/* RESPONSIVIDADE PARA CELULAR (Telas de até 600px de largura) */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 20px 15px;
+        margin-bottom: 15px;
+    }
+    
+    .form-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 15px;
+    }
+    
+    label {
+        width: 100%;
+        font-size: 0.95rem;
+    }
+    
+    input[type="text"] {
+        width: 100%;
+        text-align: left;
+        padding: 12px;
+    }
+    
+    button {
+        padding: 14px;
+        font-size: 16px;
+    }
+    
+    .recibo {
+        padding: 15px;
+        font-size: 0.85rem;
+    }
+    
+    .topo-recibo {
+        font-size: 1rem;
+    }
+    
+    .linha-liquido {
+        font-size: 1.05rem;
+    }
+}

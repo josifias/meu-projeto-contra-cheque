@@ -20,9 +20,7 @@ function calcularContraCheque() {
     const valorFD = hFD * 24.80;
     const valorFN = hFN * 29.05;
 
-    // Erro corrigido aqui (remoção da palavra 'shade')
     const rendaBruta = valorSD + valorSN + valorFD + valorFN;
-
     if (rendaBruta <= 0) {
         alert("Por favor, digite as horas trabalhadas em pelo menos um dos campos.");
         return;
@@ -36,7 +34,6 @@ function calcularContraCheque() {
     if (baseINSS > tentoINSS) baseINSS = tentoINSS;
         
     const descontoINSS = baseINSS * 0.20;
-
     let baseCalculoIR = rendaBruta - descontoINSS;
     if (baseCalculoIR < 0) baseCalculoIR = 0;
 
@@ -44,20 +41,24 @@ function calcularContraCheque() {
     let parcelaDeducaoIR = 0;
 
     if (baseCalculoIR <= 2428.80) {
-        aliquotaIR = 0; parcelaDeducaoIR = 0;
+        aliquotaIR = 0;
+        parcelaDeducaoIR = 0;
     } else if (baseCalculoIR <= 2826.65) {
-        aliquotaIR = 0.075; parcelaDeducaoIR = 182.16;
+        aliquotaIR = 0.075;
+        parcelaDeducaoIR = 182.16;
     } else if (baseCalculoIR <= 3751.05) {
-        aliquotaIR = 0.15; parcelaDeducaoIR = 394.16;
+        aliquotaIR = 0.15;
+        parcelaDeducaoIR = 394.16;
     } else if (baseCalculoIR <= 4664.68) {
-        aliquotaIR = 0.225; parcelaDeducaoIR = 675.49;
+        aliquotaIR = 0.225;
+        parcelaDeducaoIR = 675.49;
     } else {
-        aliquotaIR = 0.275; parcelaDeducaoIR = 908.73;
+        aliquotaIR = 0.275; 
+        parcelaDeducaoIR = 908.73;
     }
 
     let impostoBruto = (baseCalculoIR * aliquotaIR) - parcelaDeducaoIR;
     if (impostoBruto < 0) impostoBruto = 0;
-
     let redutorAdicional = 0;
     if (rendaBruta <= 5000.00) {
         redutorAdicional = impostoBruto;
@@ -71,14 +72,13 @@ function calcularContraCheque() {
 
     const totalDescontos = descontoINSS + impostoFinal;
     const valorLiquido = rendaBruta - totalDescontos;
-
     let htmlCorpo = "";
 
     if (hSD > 0) htmlCorpo += `<tr><td>Plantão Semana Diurno (${hSD}h)</td><td class="text-right">${formatarMoeda(valorSD)}</td><td></td></tr>`;
     if (hSN > 0) htmlCorpo += `<tr><td>Plantão Semana Noturno (${hSN}h)</td><td class="text-right">${formatarMoeda(valorSN)}</td><td></td></tr>`;
     if (hFD > 0) htmlCorpo += `<tr><td>Plantão Fim de Semana Diurno (${hFD}h)</td><td class="text-right">${formatarMoeda(valorFD)}</td><td></td></tr>`;
     if (hFN > 0) htmlCorpo += `<tr><td>Plantão Fim de Semana Noturno (${hFN}h)</td><td class="text-right">${formatarMoeda(valorFN)}</td><td></td></tr>`;
-
+    
     htmlCorpo += `
         <tr>
             <td>INSS Contrib. Indiv. (20%)</td>
